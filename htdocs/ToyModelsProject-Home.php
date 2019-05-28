@@ -21,6 +21,14 @@ session_start();
                     <img class="logo-img" src="Img/logo.png" alt="Logo" height="80" width="80" />
                 </a>
                 <h1>ToyModels Online-Shop</h1>
+                <?php 
+                if(isset($_SESSION['loggedin'])){
+                    echo "<p align = center>You are logged in</p>";
+                }
+                else{
+                    echo "<p align = center>You are not logged in</p>";
+                }	
+                ?>
             </section>
         </header>
         <!-- Creating Navigationbar-->
@@ -149,12 +157,7 @@ foreach($pdo->query($sql) as $row){
     '</td>' .
     '</tr>';
 }
-if(isset($_SESSION['loggedin'])){
-	echo "<p align = center>You are logged in</p>";
-}
-else{
-	echo "<p align = center>You are not logged in</p>";
-}	
+
 	
 			//Expire the session if user is inactive for 5
 			//minutes or more.
