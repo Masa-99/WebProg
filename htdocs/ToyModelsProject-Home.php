@@ -28,7 +28,33 @@ session_start();
                 }
                 else{
                     echo "<p align = center>You are not logged in</p>";
-                }	
+                }
+                
+                //Expire the session if user is inactive for 5
+                //minutes or more.
+                $expireAfter = 5;
+
+                if(isset($_SESSION['last_action'])){
+        
+                //Figure out how many seconds have passed
+                //since the user was last active.
+                $secondsInactive = time() - $_SESSION['last_action'];
+        
+                $expireAfterSeconds = $expireAfter * 60;
+        
+                //Check to see if they have been inactive for too long.
+                if($secondsInactive >= $expireAfterSeconds){
+                //User has been inactive for too long.
+                //Kill their session.
+                unset($_SESSION["loggedin"]);
+                echo "<p align = center>You have been logged out</p>";
+                }
+        
+                }
+    
+                //Assign the current timestamp as the user's
+                //latest activity
+                $_SESSION['last_action'] = time();
                 ?>
             </section>
         </header>
@@ -158,33 +184,6 @@ foreach($pdo->query($sql) as $row){
     '</td>' .
     '</tr>';
 }
-
-	
-			//Expire the session if user is inactive for 5
-			//minutes or more.
-			$expireAfter = 5;
-
-			if(isset($_SESSION['last_action'])){
-    
-			//Figure out how many seconds have passed
-			//since the user was last active.
-			$secondsInactive = time() - $_SESSION['last_action'];
-    
-			$expireAfterSeconds = $expireAfter * 60;
-    
-			//Check to see if they have been inactive for too long.
-			if($secondsInactive >= $expireAfterSeconds){
-			//User has been inactive for too long.
-			//Kill their session.
-			unset($_SESSION["loggedin"]);
-			echo "<p align = center>You have been logged out</p>";
-			}
-    
-			}
- 
-			//Assign the current timestamp as the user's
-			//latest activity
-			$_SESSION['last_action'] = time();
 ?>
 </table>
 </section>
