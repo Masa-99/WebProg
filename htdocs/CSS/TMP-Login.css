@@ -1,0 +1,149 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	padding-bottom: 100px;
+}
+
+h1 {
+	color: rgb(0, 0, 0);
+    text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 80%;
+	border: 3px solid #000000;
+}
+
+.loginCustomer {
+	text-align: center;
+	border: 1px solid black;
+	margin: auto;
+    padding: 5px;
+    height: auto;
+    width: 900px;
+}
+
+input[type=text], select option {
+	position: relative;
+	width: 30%;
+	padding: 12px 20px;
+	margin-left: 120px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+	text-align: left;
+	margin-left: 35%;
+}
+
+input {
+	text-indent: 1px;
+}
+
+b {
+	position: absolute;
+	font-size: 18px;
+}
+
+input:required+label {
+	color: red;
+}
+
+/* Set a style for all buttons */
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border-radius: 8px;
+	cursor: pointer;
+	width: auto;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+input:invalid {
+	opacity: 0.8;
+	border: 2px solid red;
+}
+
+/* custom checkbox */
+.checkmark {
+	position: absolute;
+	vertical-align: middle;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border: 1px solid #000000;
+}
+
+/* Footer */
+.footer{
+	position: fixed;
+    bottom: 0;
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: normal 16px sans-serif;
+    margin-left:-8px;
+	margin-top: 80px;
+	padding: 10px 50px;
+}
+.footer .footer-left p{
+	color:  #8f9296;
+	font-size: 12px;
+	margin: 0;
+}
+.footer p.footer-links{
+	font-size:15px;
+	font-weight: bold;
+	color:  #ffffff;
+	margin: 0 0 10px;
+	padding: 0;
+}
+.footer p.footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+.footer .footer-right{
+	float: right;
+	margin-top: 6px;
+	max-width: 180px;
+}
+.footer .footer-right a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-left: 3px;
+}
+.fa {
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
