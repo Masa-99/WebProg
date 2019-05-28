@@ -2,7 +2,7 @@
 
 <!doctype html>
 <html lang="en">
-<script src="basket.js"></script>
+<script src="JavaScript/basket.js"></script>
 <head>
 	<title>Warenkorb</title>
 	<!--setting charset and viewport-->

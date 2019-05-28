@@ -4,7 +4,7 @@ include_once ("mysql.php");?>
 <!doctype html>
 <html lang="en">
 
-<script src="validation.js"></script>
+<script src="JavaScript/validation.js"></script>
 
 <head>
   <title>Registeren</title>

@@ -9,7 +9,8 @@ session_start();
     <meta charset="UTF-8" content="width=device-width, initial-scale=1.0"/>
     <link href="CSS/ToyModelsProject.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="index.js"></script>
+    <script src="JavaScript/SearchOptions.js"></script>
+
 </head>
 
 <body>
@@ -39,7 +40,7 @@ session_start();
                 <!--SearchBar-->
                 <li>
                     <form method = "post" class="Searchbar">
-                        <input type="text" name ="search" placeholder="...">
+                        <input type="text" name ="search" placeholder="..." onChange="searchOptions(this.value)">
                         <button type="submit" value="Submit">
                             <Search>&#128269;
                         </button>
@@ -68,7 +69,7 @@ session_start();
                     </form>
                     </ul>
                 </li>
-                <li><a href="ToyModelsProject-Warenkorb.php">Warenkorb <img align="right"src="Img/shoppingcart.jpg" width="20" height="20"></img></a>
+                <li><a href="ToyModelsProject-Warenkorb.php">Warenkorb <img align="right" src="Img/shoppingcart.jpg" width="20" height="20"></img></a>
                 </li>
                 <li><a href="ToyModelsProject-Login.php">Login</a>
                 </li>
