@@ -66,7 +66,7 @@ table {
 }
 
 tr, .flexitem {
-	background: rgba(25, 175, 30, 0.5);
+	background: #19af1e80;
 	border-radius: 5%;
 	width: 300px;
 	height: auto;
@@ -142,12 +142,8 @@ button a {
     text-decoration: none;
 }
 
-body {
-    margin: 5px;
-    padding: 10px 0px;
-    font: normal 16px sans-serif;
-    left: 220px;
-    padding-bottom: 100px;
+body, html {
+    height: 100%;
 }
 
 
