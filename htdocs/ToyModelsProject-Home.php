@@ -22,14 +22,13 @@ session_start();
                     <img class="logo-img" src="Img/logo.png" alt="Logo" height="80" width="80" />
                 </a>
                 <h1>ToyModels Online-Shop</h1>
-                <?php 
+                <?php
                 if(isset($_SESSION['loggedin'])){
                     echo "<p align = center>You are logged in</p>";
                 }
                 else{
                     echo "<p align = center>You are not logged in</p>";
                 }
-                
                 //Expire the session if user is inactive for 5
                 //minutes or more.
                 $expireAfter = 5;
@@ -47,11 +46,9 @@ session_start();
                 //User has been inactive for too long.
                 //Kill their session.
                 unset($_SESSION["loggedin"]);
-                echo "<p align = center>You have been logged out</p>";
                 }
-        
-                }
-    
+            }
+
                 //Assign the current timestamp as the user's
                 //latest activity
                 $_SESSION['last_action'] = time();
