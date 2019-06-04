@@ -1,4 +1,5 @@
 <?php  include_once ("mysql.php");
+include_once ("myphp.php");
 session_start();
 ?>
 <!doctype html>
@@ -63,7 +64,8 @@ session_start();
                 <!--SearchBar-->
                 <li>
                     <form method = "post" class="Searchbar">
-                        <input type="text" name ="search" placeholder="..." onChange="searchOptions(this.value)">
+                        <input type="text" name ="search" placeholder="..." onChange="searchOptions(this.value)" id="searchBar">
+                        <article id="searchResults"><article/>
                         <button type="submit" value="Submit">
                             <Search>&#128269;
                         </button>
@@ -125,7 +127,7 @@ session_start();
 
         <!--Articles-->
         
-        <section class="flex-container">
+        <section>
         <table border ="0" >
 <?php
 if(isset($_POST['formSubmit'])){
