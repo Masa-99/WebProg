@@ -1,5 +1,4 @@
 <?php  include_once ("mysql.php");
-include_once ("myphp.php");
 session_start();
 ?>
 <!doctype html>
@@ -7,11 +6,11 @@ session_start();
 
 <head>
     <title>Home</title>
-    <meta charset="UTF-8" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
     <link href="CSS/ToyModelsProject.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="JavaScript/SearchOptions.js"></script>
-
+    <script language="JavaScript" type="text/javascript" src="search.js">
+    </script>
 </head>
 
 <body>
@@ -23,49 +22,19 @@ session_start();
                     <img class="logo-img" src="Img/logo.png" alt="Logo" height="80" width="80" />
                 </a>
                 <h1>ToyModels Online-Shop</h1>
-                <?php
-                if(isset($_SESSION['loggedin'])){
-                    echo "<p align = center>You are logged in</p>";
-                }
-                else{
-                    echo "<p align = center>You are not logged in</p>";
-                }
-                //Expire the session if user is inactive for 5
-                //minutes or more.
-                $expireAfter = 5;
-
-                if(isset($_SESSION['last_action'])){
-        
-                //Figure out how many seconds have passed
-                //since the user was last active.
-                $secondsInactive = time() - $_SESSION['last_action'];
-        
-                $expireAfterSeconds = $expireAfter * 60;
-        
-                //Check to see if they have been inactive for too long.
-                if($secondsInactive >= $expireAfterSeconds){
-                //User has been inactive for too long.
-                //Kill their session.
-                unset($_SESSION["loggedin"]);
-                }
-            }
-
-                //Assign the current timestamp as the user's
-                //latest activity
-                $_SESSION['last_action'] = time();
-                ?>
             </section>
         </header>
         <!-- Creating Navigationbar-->
-        <section class="navigation">
         <nav>
             <ul>
                 <h1>Navigation</h1>
                 <!--SearchBar-->
                 <li>
-                    <form method = "post" class="Searchbar">
-                        <input type="text" name ="search" placeholder="..." onChange="searchOptions(this.value)" id="searchBar">
-                        <article id="searchResults"><article/>
+                    <form method = "get" class="Searchbar" id="search" name="search"  >
+                        <input type="text" name ="search" id="searchInput" autocomplete="off" placeholder="..." onkeyup="searchProposals()">
+                        <ul class="proposals" id="searchProposals">
+                        </ul>
+
                         <button type="submit" value="Submit">
                             <Search>&#128269;
                         </button>
@@ -94,14 +63,13 @@ session_start();
                     </form>
                     </ul>
                 </li>
-                <li><a href="ToyModelsProject-Warenkorb.php">Warenkorb <img align="right" src="Img/shoppingcart.jpg" width="20" height="20"></img></a>
+                <li><a href="ToyModelsProject-Warenkorb.php">Warenkorb <img align="right"src="Img/shoppingcart.jpg" width="20" height="20"></img></a>
                 </li>
                 <li><a href="ToyModelsProject-Login.php">Login</a>
                 </li>
             </ul>
         </nav>
-</section>
-        <section class="content">
+
         <!--Slider-->
         <section class="slider-holder" id="sideshow" align="center">
             <span id="slider-image-1"></span>
@@ -127,7 +95,7 @@ session_start();
 
         <!--Articles-->
         
-        <section>
+        <section class="flex-container">
         <table border ="0" >
 <?php
 if(isset($_POST['formSubmit'])){
@@ -183,6 +151,38 @@ foreach($pdo->query($sql) as $row){
     '</td>' .
     '</tr>';
 }
+if(isset($_SESSION['loggedin'])){
+	echo "<p align = center>You are logged in</p>";
+}
+else{
+	echo "<p align = center>You are not logged in</p>";
+}	
+	
+			//Expire the session if user is inactive for 5
+			//minutes or more.
+			$expireAfter = 5;
+
+			if(isset($_SESSION['last_action'])){
+    
+			//Figure out how many seconds have passed
+			//since the user was last active.
+			$secondsInactive = time() - $_SESSION['last_action'];
+    
+			$expireAfterSeconds = $expireAfter * 60;
+    
+			//Check to see if they have been inactive for too long.
+			if($secondsInactive >= $expireAfterSeconds){
+			//User has been inactive for too long.
+			//Kill their session.
+			unset($_SESSION["loggedin"]);
+			echo "<p align = center>You have been logged out</p>";
+			}
+    
+			}
+ 
+			//Assign the current timestamp as the user's
+			//latest activity
+			$_SESSION['last_action'] = time();
 ?>
 </table>
 </section>

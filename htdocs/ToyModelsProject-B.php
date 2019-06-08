@@ -1,4 +1,4 @@
-﻿<?php  include_once ("mysql.php");
+<?php  include_once ("mysql.php");
 session_start();?>
 <!doctype html>
 <html lang="en">
@@ -33,6 +33,7 @@ while(!$ID_Available )
   $min = 10000;
   $max = 10999;
   $AuftragsID = mt_rand($min, $max);
+  $gesamtpreis = 0;
 
   //Überprüfe, dass die AuftragsID noch nicht genutzt wurde
   if(!$error) { 
@@ -50,6 +51,7 @@ echo "<p align = 'center'>Liefertermin: " . date('d-m-Y', $ShippingDate) . "</p>
 echo "<p align = 'center'>Plantermin: " . date('d-m-Y', $ShippingDate) . "</p>";
 echo "<p align='center'>KundenNr: " . $KundenID . "</p>";
 echo "<p align='center'>Auftragsnummer: " . $AuftragsID . "</p>";
+echo "<p align='center'>Gesamtpreis:" . $gesamtpreis  . "</p>";
 
 if(!$error) {
 	$statement = $pdo->prepare("INSERT INTO auftraege(AuftragsNr,Auftragsdatum,Plantermin,KundenNr) VALUES (:AuftragsNr, :Auftragsdatum, :Plantermin, :KundenNr)");
