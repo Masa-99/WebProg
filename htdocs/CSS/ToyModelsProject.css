@@ -80,6 +80,7 @@ tr, .flexitem {
     padding: 10px;
     text-align: center;
     content: center;
+    font: normal 12px sans-serif;
 }
 
 td #beschreibung {
