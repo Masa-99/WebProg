@@ -2,8 +2,10 @@
 nav > ul {
 	position: fixed;
     list-style-type: none;
+    width: 33%;
     background-color: #6e6b6b;
     height: 100%;
+    overflow: auto;
     padding: 0px;
     margin: 0px;
     left: 0;
@@ -13,9 +15,8 @@ nav > ul {
     text-align: justify;
     font-family: Helvetica;
     cursor: pointer;
-    float: left;
-    width: 190px;
 }
+
 
 nav a, .submenu input {
     text-align: left;
@@ -28,9 +29,10 @@ nav a, .submenu input {
 }
 
 nav h1 {
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
     letter-spacing: 3px;
+    text-shadow: 2px 2px whitesmoke;
 }
 
 nav a:hover, a:focus {
@@ -45,20 +47,11 @@ nav li {
 }
 
 /* Content Mangement */
-.content {
-    width: 90%;
-    float: left;
-  padding: 15px;
-}
-
-.navigation {
-    width: 12%;
-    float: left;
-    padding: 15px;
-}
-
-* {
-    box-sizing: border-box;
+.flex-container {
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  align-content: center;
 }
 
 table {
@@ -66,7 +59,7 @@ table {
 }
 
 tr, .flexitem {
-	background: #19af1e80;
+	background: rgba(25, 175, 30, 0.5);
 	border-radius: 5%;
 	width: 300px;
 	height: auto;
@@ -138,14 +131,24 @@ button:hover {
     cursor: pointer;
 }
 
-button a {
-    text-decoration: none;
+body {
+    margin: 5px;
+    padding: 10px 0px;
+    font: normal 16px sans-serif;
+    left: 220px;
+    padding-bottom: 100px;
 }
 
-body, html {
-    height: 100%;
+#loginCustomer {
+	position: fixed;
+	width: auto;
+    background-color: #eeeded;
+    border-radius: 8px;
+    padding: 5px;
+    right: 0;
+    top: 0;
+    font-size: 10px;
 }
-
 
 .Searchbar {
     background-color: #eeeded;

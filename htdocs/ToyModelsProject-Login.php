@@ -7,7 +7,7 @@ include_once ("mysql.php");
 
 <!doctype html>
 <html lang="en">
-<script src="JavaScript/validation.js"></script>
+<script src="validation.js"></script>
 <head>
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
