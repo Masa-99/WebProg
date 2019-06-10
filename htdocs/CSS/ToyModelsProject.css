@@ -2,10 +2,8 @@
 nav > ul {
 	position: fixed;
     list-style-type: none;
-    width: 33%;
     background-color: #6e6b6b;
     height: 100%;
-    overflow: auto;
     padding: 0px;
     margin: 0px;
     left: 0;
@@ -15,10 +13,11 @@ nav > ul {
     text-align: justify;
     font-family: Helvetica;
     cursor: pointer;
+    float: left;
+    width: 190px;
 }
 
-
-nav a, .submenu input {
+#nav-link  a, .submenu input {
     text-align: left;
     padding: 10px 10px;
     color: black;
@@ -29,13 +28,12 @@ nav a, .submenu input {
 }
 
 nav h1 {
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     letter-spacing: 3px;
-    text-shadow: 2px 2px whitesmoke;
 }
 
-nav a:hover, a:focus {
+#nav-link  a:hover, a:focus {
     color: #ffffff;
     background-color: #7c7e7cd0;
     text-decoration: underline;    
@@ -47,18 +45,27 @@ nav li {
 }
 
 /* Content Mangement */
-.flex-container {
-  align-items: center;
-  justify-content: center;
-  flex-flow: column wrap;
-  align-content: center;
+.content {
+    width: 90%;
+    float: left;
+  padding: 15px;
+}
+
+.navigation {
+    width: 12%;
+    float: left;
+    padding: 15px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 table {
     display: table;
 }
 
-tr, .flexitem {
+tr:not(#carttr), .flexitem {
 	background: rgba(25, 175, 30, 0.5);
 	border-radius: 5%;
 	width: 300px;
@@ -73,6 +80,9 @@ tr, .flexitem {
     padding: 10px;
     text-align: center;
     content: center;
+}
+td #carttd{
+	padding-right: 200px;
 }
 
 td #beschreibung {
@@ -131,6 +141,10 @@ button:hover {
     cursor: pointer;
 }
 
+button a {
+    text-decoration: none;
+}
+
 body {
     margin: 5px;
     padding: 10px 0px;
@@ -139,16 +153,6 @@ body {
     padding-bottom: 100px;
 }
 
-#loginCustomer {
-	position: fixed;
-	width: auto;
-    background-color: #eeeded;
-    border-radius: 8px;
-    padding: 5px;
-    right: 0;
-    top: 0;
-    font-size: 10px;
-}
 
 .Searchbar {
     background-color: #eeeded;
@@ -273,6 +277,7 @@ body {
     margin-top: 0px;
     text-align: center;
     overflow: hidden;
+	z-index: -1;
 }
 
 .image-holder {
@@ -286,6 +291,7 @@ body {
     -moz-transition: left 2s;
     -o-transition: left 2s;
     transition: left 2s;
+	z-index: -1;
 }
         
 .slider-image {
@@ -293,6 +299,7 @@ body {
     margin: 0px;
     padding: 0px;
     position: relative;
+	z-index: -1;
 }
         
 #slider-image-1:target ~ .image-holder {
@@ -310,6 +317,7 @@ body {
 .button-holder {
     position: relative;
     top: -20px;
+	z-index: -1;
 }
         
 .slider-change {
@@ -318,4 +326,5 @@ body {
     width: 10px;
     border-radius: 5px;
     background-color: rgb(78, 75, 75);
+	z-index: -1;
 }
