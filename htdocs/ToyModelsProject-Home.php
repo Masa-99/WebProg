@@ -9,8 +9,8 @@ session_start();
     <meta charset="UTF-8" />
     <link href="CSS/ToyModelsProject.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script language="JavaScript" type="text/javascript" src="search.js">
-    </script>
+    <script src="index.js"></script>
+	<script src="Javascript/popup.js" defer></script>
 </head>
 
 <body>
@@ -23,6 +23,19 @@ session_start();
                 </a>
                 <h1>ToyModels Online-Shop</h1>
             </section>
+            <!--Login Form-->
+            <section id="loginCustomer">
+                <label><b>Login:</b>
+                </label>
+                <br>
+                <label for="kID"><b>KundenID: </b>
+                </label>
+                <input type="password" placeholder="KundenID eingeben" name="kID" required>
+                <br>
+                <button type="submit">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember">Remember me</label>
+            </section>
         </header>
         <!-- Creating Navigationbar-->
         <nav>
@@ -30,19 +43,16 @@ session_start();
                 <h1>Navigation</h1>
                 <!--SearchBar-->
                 <li>
-                    <form method = "get" class="Searchbar" id="search" name="search"  >
-                        <input type="text" name ="search" id="searchInput" autocomplete="off" placeholder="..." onkeyup="searchProposals()">
-                        <ul class="proposals" id="searchProposals">
-                        </ul>
-
+                    <form method = "post" class="Searchbar">
+                        <input type="text" name ="search" placeholder="...">
                         <button type="submit" value="Submit">
                             <Search>&#128269;
                         </button>
                     </form>
                 </li>
-                <li><a href="ToyModelsProject-Home.php">Home</a>
+                <li id="nav-link" ><a  href="ToyModelsProject-Home.php">Home</a>
                 </li>
-                <li><a>Kategorieauswahl</a>
+                <li id="nav-link"><a id="nav-link" href="ToyModelsProject-Home.php">Kategorieauswahl</a>
                     <ul id="submenu">
                     <form align="center" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
                         <select name="formFahrzeug">
@@ -63,9 +73,10 @@ session_start();
                     </form>
                     </ul>
                 </li>
-                <li><a href="ToyModelsProject-Warenkorb.php">Warenkorb <img align="right"src="Img/shoppingcart.jpg" width="20" height="20"></img></a>
-                </li>
-                <li><a href="ToyModelsProject-Login.php">Login</a>
+				<my-popup>
+				</my-popup>	
+
+                <li id="nav-link" ><a href="ToyModelsProject-Login.php">Login</a>
                 </li>
             </ul>
         </nav>
@@ -120,7 +131,8 @@ else if(isset($_POST['search'])) {
                artikel.beschreibung as ab,
                artikel.listenpreis as al,
                warengruppen.gruppenname as wg
-               from artikel inner join warengruppen on artikel.gruppennr = warengruppen.gruppennr WHERE ArtikelName LIKE '%$searchq%'";
+               from artikel inner join warengruppen on artikel.gruppennr =
+			   warengruppen.gruppennr WHERE ArtikelName LIKE '%$searchq%'";
 	$res = $pdo -> query($sql);
 	
 	//check if results found
@@ -138,7 +150,6 @@ else if(isset($_POST['search'])) {
 }
         
 foreach($pdo->query($sql) as $row){
-	$ID = $row["anr"];
     echo 
 	'<tr> ' .
     '<td>' .
@@ -147,7 +158,8 @@ foreach($pdo->query($sql) as $row){
     '<label id="beschreibung">' . $row["ab"] . '</label>' . '<br>' .
     '<label>' . $row["al"] . "&euro;" . '</label>' . '<br>' .
     '<label>' . $row["wg"] . '</label>' . '<br>' .
-	'<a href="ToyModelsProject-Add-to-cart.php?id=' . $ID . '"><button>In den Warenkorb</button></a>' . 
+	'<a href="ToyModelsProject-Add-to-cart.php?id=' . $row["anr"] . '">
+	  <button>In den Warenkorb</button></a>' . 
     '</td>' .
     '</tr>';
 }
