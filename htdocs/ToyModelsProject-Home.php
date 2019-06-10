@@ -1,4 +1,5 @@
 <?php  include_once ("mysql.php");
+include_once ("myphp.php");
 session_start();
 ?>
 <!doctype html>
@@ -42,12 +43,13 @@ session_start();
                 $expireAfterSeconds = $expireAfter * 60;
         
                 //Check to see if they have been inactive for too long.
-                    if($secondsInactive >= $expireAfterSeconds){
-                    //User has been inactive for too long.
-                    //Kill their session.
-                    unset($_SESSION["loggedin"]);
-                    }
+                if($secondsInactive >= $expireAfterSeconds){
+                //User has been inactive for too long.
+                //Kill their session.
+                unset($_SESSION["loggedin"]);
                 }
+            }
+
                 //Assign the current timestamp as the user's
                 //latest activity
                 $_SESSION['last_action'] = time();
@@ -62,7 +64,7 @@ session_start();
                 <!--SearchBar-->
                 <li>
                     <form method = "post" class="Searchbar">
-                        <input type="text" id="search" placeholder="..." onChange="searchOptions()" id="searchBar">
+                        <input type="text" name ="search" placeholder="..." onChange="searchOptions(this.value)" id="searchBar">
                         <article id="searchResults"><article/>
                         <button type="submit" value="Submit">
                             <Search>&#128269;
@@ -156,9 +158,9 @@ else if(isset($_POST['search'])) {
 	//check if results found
 	if($res -> rowCount() == 0){
 		echo "<p align = center>Keine Artikel gefunden!</p>";
-    }
-
-} else {
+	}
+}
+ else {
     $sql = "SELECT artikel.artikelname as an,
 	artikel.artikelNr as anr,
     artikel.beschreibung as ab,
@@ -181,23 +183,6 @@ foreach($pdo->query($sql) as $row){
     '</td>' .
     '</tr>';
 }
-
-//Gettins search results
-if(isset($_GET['searchBar'])) {
-        $search = ltrim.($_POST['searchBar']);
-        header("Content-type: application/json; charset={$charset}");
-        if(!empty($search)){
-            $res = $conn -> query("SELECT ArtikleNr, ArtikelName FROM artikel WHERE LIKE '%".$search."%'");
-            $data = array();
-            while($row = $res->fetch_accoss())
-            {
-                $row['ArtikelName'] = htmlspecialchars_uni($row['ArtikelName']);
-                $data[] = array('id' => $row['ArtikelNr'], 'text' => $row['ArtikleName']);
-            }
-            echo json_encode($data);
-            exit;
-        }
-    }
 ?>
 </table>
 </section>
